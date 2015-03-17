@@ -30,16 +30,16 @@ and open the template in the editor.
                     echo "</tr>";
 
                     //Muestra los objetos obtenidos desde la base de datos
-                    while($row = mysql_fetch_assoc($resultado)){
+                    while($row = $result->fetch_assoc($resultado)){
 
                         $txtproyecto = $row['proyecto'];
                         $txtcreador = $row['creador'];
                         $txtdescripcion = $row['descripcion'];
 
                         echo "<tr>";
-                        echo "<td> $txtproyectoname </td>";
-                        echo "<td> $txtcreadorname </td>";
-                        echo "<td> $txtdescripcionname </td>";
+                        echo "<td> $txtproyecto </td>";
+                        echo "<td> $txtcreador </td>";
+                        echo "<td> $txtdescripcion </td>";
                         echo "</tr>";
 
                     }
