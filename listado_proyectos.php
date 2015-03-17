@@ -29,9 +29,9 @@ and open the template in the editor.
                     echo "<th>Descripcion</th>";                
                     echo "</tr>";
 
-                    if ($resultado->num_rows > 0) {
+                    if(mysql_num_rows($resultado) > 0) {
                         //Muestra los objetos obtenidos desde la base de datos
-                        while($row = $result->fetch_assoc($resultado)){
+                        while($row = $result->mysql_fetch_assoc($resultado)){
 
                             $txtproyecto = $row['proyecto'];
                             $txtcreador = $row['creador'];
