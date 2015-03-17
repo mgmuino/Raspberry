@@ -29,19 +29,24 @@ and open the template in the editor.
                     echo "<th>Descripcion</th>";                
                     echo "</tr>";
 
-                    //Muestra los objetos obtenidos desde la base de datos
-                    while($row = $result->fetch_assoc($resultado)){
+                    if ($resultado->num_rows > 0) {
+                        //Muestra los objetos obtenidos desde la base de datos
+                        while($row = $result->fetch_assoc($resultado)){
 
-                        $txtproyecto = $row['proyecto'];
-                        $txtcreador = $row['creador'];
-                        $txtdescripcion = $row['descripcion'];
+                            $txtproyecto = $row['proyecto'];
+                            $txtcreador = $row['creador'];
+                            $txtdescripcion = $row['descripcion'];
 
-                        echo "<tr>";
-                        echo "<td> $txtproyecto </td>";
-                        echo "<td> $txtcreador </td>";
-                        echo "<td> $txtdescripcion </td>";
-                        echo "</tr>";
+                            echo "<tr>";
+                            echo "<td> $txtproyecto </td>";
+                            echo "<td> $txtcreador </td>";
+                            echo "<td> $txtdescripcion </td>";
+                            echo "</tr>";
 
+                        }
+                    }
+                    else{
+                        echo "0 resultados";
                     }
                 echo "</table>";
             }            
