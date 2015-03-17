@@ -18,7 +18,6 @@ and open the template in the editor.
         <?php
             $bd = conectaBd();
             $consulta = "SELECT proyecto, creador, descripcion FROM listado_proyectos";
-            $resultado = $bd->query($consulta);
             if (!$resultado) {
                 echo "Error en la consulta";
             } else {
@@ -29,25 +28,20 @@ and open the template in the editor.
                     echo "<th>Descripcion</th>";                
                     echo "</tr>";
 
-                    if(mysql_num_rows($resultado) > 0) {
-                        //Muestra los objetos obtenidos desde la base de datos
-                        while($row = $result->mysql_fetch_assoc($resultado)){
-
-                            $txtproyecto = $row['proyecto'];
-                            $txtcreador = $row['creador'];
-                            $txtdescripcion = $row['descripcion'];
-
+                    foreach ($bd=>query($consulta) as $row) {
                             echo "<tr>";
-                            echo "<td> $txtproyecto </td>";
-                            echo "<td> $txtcreador </td>";
-                            echo "<td> $txtdescripcion </td>";
+                            echo "<td>";
+                            print $row['proyecto'];
+                            echo "</td>";
+                            echo "<td>";
+                            print $row['proyecto'];
+                            echo "</td>";
+                            echo "<td>"; 
+                            print $row['proyecto'];
+                            echo "</td>";
                             echo "</tr>";
-
-                        }
                     }
-                    else{
-                        echo "0 resultados";
-                    }
+                    
                 echo "</table>";
             }            
             $bd = null;

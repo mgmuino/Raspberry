@@ -18,8 +18,8 @@ function conectaBd()
 {
     try {
         //$db = new PDO("mysql:host=localhost", "root", "raspberry");
-        $bd = mysql_connect(BD_CONEX_PDO, BD_USUARIO, BD_PASSWORD, BD_NOME);
-        return($bd);
+        $db = new PDO(BD_CONEX_PDO, BD_USUARIO, BD_PASSWORD);
+        return($db);
     } catch (PDOException $e) {
         print "<p>Error: No puede conectarse con la base de datos.</p>\n";
         print "<p>Error: " . $e->getMessage() . "</p>\n";
