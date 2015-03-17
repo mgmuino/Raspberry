@@ -18,32 +18,28 @@ and open the template in the editor.
         <?php
             $bd = conectaBd();
             $consulta = "SELECT proyecto, creador, descripcion FROM listado_proyectos";
-            if (!$resultado) {
-                echo "Error en la consulta";
-            } else {
-                echo "<table border=1>";
+            echo "<table border=1>";
+                echo "<tr>";
+                echo "<th>Proyecto</th>";
+                echo "<th>Creador</th>";
+                echo "<th>Descripcion</th>";                
+                echo "</tr>";
+
+                foreach ($bd->query($consulta) as $col) {
+
+                    $proyecto = $col['proyecto'];
+                    $creador = $col['creador'];
+                    $descripcion = $col['descripcion'];
+
                     echo "<tr>";
-                    echo "<th>Proyecto</th>";
-                    echo "<th>Creador</th>";
-                    echo "<th>Descripcion</th>";                
+                        echo "<td> $proyecto </td>";
+                        echo "<td> $creador </td>";
+                        echo "<td> $descripcion </td>";
                     echo "</tr>";
 
-                    foreach ($bd=>query($consulta) as $row) {
-                            echo "<tr>";
-                            echo "<td>";
-                            print $row['proyecto'];
-                            echo "</td>";
-                            echo "<td>";
-                            print $row['proyecto'];
-                            echo "</td>";
-                            echo "<td>"; 
-                            print $row['proyecto'];
-                            echo "</td>";
-                            echo "</tr>";
-                    }
-                    
-                echo "</table>";
-            }            
+                }
+
+            echo "</table>";            
             $bd = null;
         ?>   
     </body>
