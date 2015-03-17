@@ -17,17 +17,32 @@ and open the template in the editor.
         <br>
         <?php
             $bd = conectaBd();
-            $consulta = "SELECT * FROM listado_proyectos";
+            $consulta = "SELECT proyecto, creador, descripcion FROM listado_proyectos";
             $resultado = $bd->query($consulta);
             if (!$resultado) {
                 echo "Error en la consulta";
             } else {
                 echo "<table border=1>";
-                echo "<tr>";
-                echo "<th>Proyecto</th>";
-                echo "<th>Creador</th>";
-                echo "<th>Descripcion</th>";                
-                echo "</tr>";
+                    echo "<tr>";
+                    echo "<th>Proyecto</th>";
+                    echo "<th>Creador</th>";
+                    echo "<th>Descripcion</th>";                
+                    echo "</tr>";
+
+                    //Muestra los objetos obtenidos desde la base de datos
+                    while($row = mysql_fetch_assoc($resultado)){
+
+                        $txtproyecto = $row['proyecto'];
+                        $txtcreador = $row['creador'];
+                        $txtdescripcion = $row['descripcion'];
+
+                        echo "<tr>";
+                        echo "<td> $txtproyectoname </td>";
+                        echo "<td> $txtcreadorname </td>";
+                        echo "<td> $txtdescripcionname </td>";
+                        echo "</tr>";
+
+                    }
                 echo "</table>";
             }            
             $bd = null;
